@@ -11,17 +11,17 @@
     <context:component-scan base-package="com.ib" />
     <context:annotation-config />
     
-    <bean class="com.ib.App" />
+    <bean class="com.ib.App2" />
     <!-- 
     <bean class="com.ib.Sumadora" />
      -->
-    <!-- 
-    <bean id="dataSource" class="com.mysql.cj.jdbc.MysqlDataSource">
+     
+    <bean class="com.mysql.cj.jdbc.MysqlDataSource">
         <property name="url" value="${jdbc.url}"/>
         <property name="user" value="${jdbc.username}"/>
         <property name="password" value="${jdbc.password}"/>
     </bean>
 
     <context:property-placeholder location="jdbc.properties"/>
-	 -->
+	 
 </beans>
