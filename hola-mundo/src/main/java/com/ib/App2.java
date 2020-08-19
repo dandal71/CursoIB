@@ -1,6 +1,7 @@
-package com.ib;
-
+package com.ib; 
+ 
 import java.sql.Connection;
+
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -27,17 +28,17 @@ public class App2 {
 
     public void run() {
         
-        try(Connection conn = ds.getConnection()) {
+        try(Connection connection = ds.getConnection()) {
             
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT curso_id, descripcion FROM cursos");
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery("SELECT * FROM curso");
             
             while (rs.next()) {
                 
-                int id = rs.getInt("curso_id");
-                String descripcion = rs.getString("descripcion");
-                
-                System.out.println("Curso: [" + id + "] " + descripcion);
+                int id = rs.getInt("id");
+                System.out.println("ID: " + rs.getInt("id"));
+                System.out.println("Nombre: " + rs.getString("nombre"));
+                System.out.println("-------------------------------------");                
             }
             
             stmt.close();

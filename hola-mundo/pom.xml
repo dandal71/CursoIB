@@ -8,7 +8,7 @@
 	<groupId>com.ib</groupId>
 	<artifactId>hola-mundo</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
+ 
 	<name>hola-mundo</name>
 
 	<properties>
@@ -17,7 +17,7 @@
 		<maven.compiler.target>1.8</maven.compiler.target>
 	</properties>
 
-	<dependencies>
+	<dependencies> 
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>

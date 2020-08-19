@@ -9,7 +9,7 @@ import org.springframework.context.annotation.PropertySource;
 
 import com.mysql.cj.jdbc.MysqlDataSource;
 
-@Configuration
+//@Configuration
 @PropertySource("classpath:jdbc.properties")
 public class DatasourceCfg {
 
