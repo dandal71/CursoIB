@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1 th:if="${!#strings.isEmpty(nombre)}" th:text="'Hola ' + ${nombre}"><p>Ignora esto</p></h1>	
+	<h1 th:if="${#strings.isEmpty(nombre)}">TE FALTO EL NOMBRE</h1>
+</body>
+</html>
