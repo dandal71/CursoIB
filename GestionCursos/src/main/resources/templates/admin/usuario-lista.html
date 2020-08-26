@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    th:replace="@{/common/layout} :: layout(~{::title}, ~{::section})">
+<head>
+<title>Listado de Usuarios - IB</title>
+</head>
+<body>
+    <section>
+        <div class="card">
+            <div class="card-header bg-secondary text-center">
+                <h5>Listado de Usuarios del Sistema</h5>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th style="width: 10px">#</th>
+                            <th>Nombre de usuario</th>
+                            <th>Nombre y Apellido</th>
+                            <th>Email</th>
+                            <th>Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>[id]</td>
+                            <td>[nombre de usuario]</td>
+                            <td>[nombre y apellido]</td>
+                            <td>[email]</td>
+                            <td>[rol]</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer text-center">
+                <button type="button" class="btn btn-primary">Nuevo Usuario</button>
+            </div>
+    </section>
+</body>
+</html>

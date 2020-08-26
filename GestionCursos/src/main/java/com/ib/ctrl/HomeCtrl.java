@@ -15,4 +15,5 @@ public class HomeCtrl {
         model.addAttribute("nombre", nombre);
         return "home";
     }
+    
 }
