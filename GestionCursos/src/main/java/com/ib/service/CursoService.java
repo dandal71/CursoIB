@@ -9,8 +9,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.ib.entity.Curso;
-import com.ib.entity.CursoRepository;
+import com.ib.data.Curso;
+import com.ib.data.CursoRepository;
 
 /**
  * Clase de servicio para Cursos

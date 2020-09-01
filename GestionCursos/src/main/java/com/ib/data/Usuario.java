@@ -1,4 +1,4 @@
-package com.ib.entity;
+package com.ib.data;
 
 public class Usuario {
 

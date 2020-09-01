@@ -1,7 +1,7 @@
 /**
  * Entidad curso
  */
-package com.ib.entity;
+package com.ib.data;
 
 import java.sql.Date;
 import javax.persistence.Entity;

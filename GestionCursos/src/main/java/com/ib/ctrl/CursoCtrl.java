@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.ib.entity.Curso;
+import com.ib.data.Curso;
 import com.ib.service.CursoService;
 
 /**
