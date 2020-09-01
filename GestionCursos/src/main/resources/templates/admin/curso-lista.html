@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-    th:replace="fragments/layout :: layout('Lista Usuario', ~{},  ~{::section}, 'nav-link-cursos')">
+    th:replace="fragments/layout :: layout('Lista cursos', ~{},  ~{::section}, 'nav-link-cursos')">
 
 <body>
     <section>
@@ -13,26 +13,33 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th style="width: 10px">#</th>
-                            <th>Nombre de usuario</th>
-                            <th>Nombre y Apellido</th>
-                            <th>Email</th>
-                            <th>Rol</th>
+                            <th class="text-center" style="width: 10px">#</th>
+                            <th class="text-center">Nombre </th>
+                            <th class="text-center">Fecha Inicio</th>
+                            <th class="text-center">Fecha Fin</th>
+                            <th class="text-center">Cupos</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>[id]</td>
-                            <td>[nombre de usuario]</td>
-                            <td>[nombre y apellido]</td>
-                            <td>[email]</td>
-                            <td>[rol]</td>
+                        <tr th:each="curso : ${cursos}">
+                            <td class="text-center" th:text="${curso.id}"></td>
+                            <td>
+                                <a th:href="@{/admin/cursos(id=${curso.id})}">
+                                    <p th:text="${curso.nombre}"></p>
+                                </a>
+                            </td>
+                            <td class="text-center" th:text="${#dates.format(curso.fechainicio, 'dd-MMM-yyyy')}"></td>
+                            <td class="text-center" th:text="${#dates.format(curso.fechafin, 'dd-MM-yyyy')}"></td>
+                            <td class="text-center" th:text="${curso.cupos}"></td>
+                            
+                            
+                            <!-- <td class="text-center" th:text="${curso.estado} == 1? 'ACTIVO' : 'BAJA'"></td>-->
                         </tr>
                     </tbody>
                 </table>
             </div>
             <div class="card-footer text-center">
-                <button type="button" class="btn btn-primary">Nuevo Usuario</button>
+                <a class="btn btn-primary"  th:href="@{/admin/cursos(id=0)}" role="button">Nuevo Curso</a>                
             </div>
     </section>
 </body>
