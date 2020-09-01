@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    th:replace="fragments/layout :: layout('Lista cursos', ~{::script},  ~{::section}, 'nav-link-cursos')">
+
+<body>
+    <section>
+        <div class="container m-5">
+            <div class="row  justify-content-center">
+                <div class="col-8">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Formulario de Cursos</h3>
+                        </div>
+                        <!-- /.card-header -->
+                        <!-- form start -->
+                        <form action="#" th:action="@{/admin/cursos}" th:object="${curso}" method="post">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="nombre">Nombre</label> 
+                                            <input type="text" th:field="*{nombre}" class="form-control" id="nombre" placeholder="Nombre curso"/>
+                                        </div>
+                                    </div>
+                               </div>
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <label for="fechainicio">Inicio</label> 
+                                            <input type="text" th:field="*{fechainicio}" class="form-control" id="fechainicio"  autocomplete="off" placeholder="Fecha Inicio"/>
+                                        </div>
+                                        <div class="col-6">
+                                            <label for="fechafin">Fin</label> 
+                                            <input type="text" th:field="*{fechafin}" class="form-control" autocomplete="off" id="fechafin" placeholder="Fecha Fin"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                 <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="cupos">Cupos</label>                                                                                                   
+                                            <input type="number" id="cupos" class="form-control" th:field="*{cupos}" placeholder="Cupos"/>
+                                                
+                                        </div>
+                                    </div>
+                               </div>
+                                                            
+                            </div>
+                            <!-- /.card-body -->
+
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+                            <input type="hidden" th:field="*{id}" />
+                            <input type="hidden" th:field="*{estado}" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        
+    </section>
+
+    <script>
+        $( document ).ready(function() {    
+              $('.slider').bootstrapSlider()
+        });              
+    </script>
+   
+</body>
+</html>
