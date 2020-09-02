@@ -4,12 +4,12 @@
 package com.ib.data.entity;
 
 import java.sql.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -24,8 +24,7 @@ public class Curso {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Long id;
     
-    @NotEmpty
-    @Size(min=5, max=70)
+    @NotEmpty    
     private String nombre;
     
     @DateTimeFormat(pattern = "dd/MM/yyyy")

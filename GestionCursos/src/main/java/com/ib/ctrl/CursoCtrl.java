@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,8 +33,8 @@ public class CursoCtrl {
      * Procesa el listado de cursos
      */
     @GetMapping(value = {"/admin/cursos", "/admin/cursos/{id}"})
-    public String procesarCurso( @PathVariable(required = false) Long id, Model model
-            , @ModelAttribute CursoForm cursoForm ) {
+    public String procesarCurso( @PathVariable(required = false) Long id
+                            , @ModelAttribute CursoForm cursoForm, Model model) {
 
         //Si el id es nulo muestra todos los usuarios activos (estado > 0)                
         if (id == null) {                 
@@ -41,7 +42,11 @@ public class CursoCtrl {
             return "/admin/curso-lista";    
         } else { //Si el id no es nulo, carga el form con esa entidad
             cursoForm.setCurso(cursoService.obtenerCursoPorID(id));            
-            return "/admin/curso-form"; 
+            return "/admin/curso-form";
+            
+            //Esto sería lo idea, es decir llamar al otro método, para que cargue el form
+            //pero por algún motivo el @NotEmpty me limpia el field en el formulario
+            //return "redirect:/admin/cursos/form/" + id;  
         }        
     }
     
@@ -50,7 +55,7 @@ public class CursoCtrl {
      */
     @RequestMapping(value = {"/admin/cursos/form", "/admin/cursos/form/{id}"})
     public String procesarFormCurso(@PathVariable(required = false) Long id
-            , @Valid @ModelAttribute CursoForm cursoForm,  BindingResult resultadoValidacion) {
+            , @Valid  @ModelAttribute CursoForm cursoForm,  BindingResult resultadoValidacion) {
         
         //Si el id no es nulo cargo el form con los datos del curso
         if (id != null) {            
