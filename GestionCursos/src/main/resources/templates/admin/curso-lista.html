@@ -24,7 +24,7 @@
                         <tr th:each="curso : ${cursos}">
                             <td class="text-center" th:text="${curso.id}"></td>
                             <td>
-                                <a th:href="@{/admin/cursos(id=${curso.id})}">
+                                <a th:href="@{'/admin/cursos/' + ${curso.id}}">
                                     <p th:text="${curso.nombre}"></p>
                                 </a>
                             </td>
@@ -39,7 +39,7 @@
                 </table>
             </div>
             <div class="card-footer text-center">
-                <a class="btn btn-primary"  th:href="@{/admin/cursos(id=0)}" role="button">Nuevo Curso</a>                
+                <a class="btn btn-primary"  th:href="@{'/admin/cursos/form/0'}" role="button">Nuevo Curso</a>                
             </div>
     </section>
 </body>

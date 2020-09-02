@@ -1,12 +1,14 @@
 /**
  * 
  */
-package com.ib.data;
+package com.ib.data.dao;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+
+import com.ib.data.entity.Curso;
 
 /**
  * @author Compumar

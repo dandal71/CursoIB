@@ -1,9 +1,11 @@
 /**
  * 
  */
-package com.ib.data;
+package com.ib.data.dao;
 
 import java.util.List;
+
+import com.ib.data.entity.Curso;
 
 /**
  * Interface para extender la funcionalidad del CRUD Repository

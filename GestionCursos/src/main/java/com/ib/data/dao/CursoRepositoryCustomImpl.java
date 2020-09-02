@@ -1,13 +1,15 @@
 /**
  * 
  */
-package com.ib.data;
+package com.ib.data.dao;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+
+import com.ib.data.entity.Curso;
 
 /**
  * Clase que implmenta la interface para extender el CRUD Repository

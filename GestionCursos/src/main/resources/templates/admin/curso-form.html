@@ -13,13 +13,14 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-                        <form action="#" th:action="@{/admin/cursos}" th:object="${curso}" method="post">
+                        <form action="#" th:action="@{/admin/cursos/form}" th:object="${cursoForm}" method="post" th:id="cursoForm">
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="nombre">Nombre</label> 
-                                            <input type="text" th:field="*{nombre}" class="form-control" id="nombre" placeholder="Nombre curso"/>
+                                            <input type="text" th:field="*{curso.nombre}" class="form-control" id="nombre" placeholder="Nombre curso"  th:errorclass="is-invalid"/>
+                                            <ul><li class="small text-danger" th:each="err : ${#fields.errors('curso.nombre')}" th:text="${err}">Error</li></ul>                                            
                                         </div>
                                     </div>
                                </div>
@@ -27,11 +28,13 @@
                                     <div class="row">
                                         <div class="col-6">
                                             <label for="fechainicio">Inicio</label> 
-                                            <input type="text" th:field="*{fechainicio}" class="form-control" id="fechainicio"  autocomplete="off" placeholder="Fecha Inicio"/>
+                                            <input type="text" th:field="*{curso.fechainicio}" class="form-control" id="fechainicio"  autocomplete="off" placeholder="Fecha Inicio" th:errorclass="is-invalid"/>
+                                            <ul><li class="small text-danger" th:each="err : ${#fields.errors('curso.fechainicio')}" th:text="${err}">Error</li></ul>                                            
                                         </div>
                                         <div class="col-6">
                                             <label for="fechafin">Fin</label> 
-                                            <input type="text" th:field="*{fechafin}" class="form-control" autocomplete="off" id="fechafin" placeholder="Fecha Fin"/>
+                                            <input type="text" th:field="*{curso.fechafin}" class="form-control" autocomplete="off" id="fechafin" placeholder="Fecha Fin" th:errorclass="is-invalid"/>
+                                            <ul><li class="small text-danger" th:each="err : ${#fields.errors('curso.fechafin')}" th:text="${err}">Error</li></ul>
                                         </div>
                                     </div>
                                 </div>
@@ -39,20 +42,23 @@
                                     <div class="col">
                                         <div class="form-group">
                                             <label for="cupos">Cupos</label>                                                                                                   
-                                            <input type="number" id="cupos" class="form-control" th:field="*{cupos}" placeholder="Cupos"/>
+                                            <input type="number" id="cupos" class="form-control" th:field="*{curso.cupos}" placeholder="Cupos"/>
                                                 
                                         </div>
                                     </div>
                                </div>
                                                             
                             </div>
+                                                        
                             <!-- /.card-body -->
 
-                            <div class="card-footer">
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                            <div class="card-footer text-center">
+                                <button type="submit" class="btn btn-primary m-2">Guardar</button>
+                                <button th:if="${cursoForm.curso.id}" type="button" id="btnEliminar" class="btn btn-primary m-2">Eliminar</button>
+                                <button type="button" id="btnCancelar" class="btn btn-primary m-2">Cancelar</button>
                             </div>
-                            <input type="hidden" th:field="*{id}" />
-                            <input type="hidden" th:field="*{estado}" />
+                            <input type="hidden" th:field="*{curso.id}" />
+                            <input type="hidden" id="hdEstado" th:field="*{curso.estado}" />
                         </form>
                     </div>
                 </div>
@@ -60,11 +66,47 @@
         </div>
     
         
+        <!-- Modal -->
+        <div class="modal fade" id="alertElimina" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Eliminar Entidad</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                    Desea eliminar esta entidad ?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="btnConfirmaEliminacion" class="btn btn-primary">Eliminar</button>
+              </div>
+            </div>
+          </div>
+        </div>
     </section>
 
     <script>
         $( document ).ready(function() {    
               $('.slider').bootstrapSlider()
+              
+              //Botón eliminar del form
+              $('#btnEliminar').on('click',  function () {
+            	  $('#alertElimina').modal();
+              });
+              
+              //Botón eliminar del modal
+              $('#btnConfirmaEliminacion').on('click',  function () {
+            	  $("#hdEstado").val(0);
+            	  $("#cursoForm").submit();
+     	 	  });
+              
+              //botón cancelar del form
+              $('#btnCancelar').on('click',  function () {
+            	  window.location = "/admin/cursos";
+     	 	  });
         });              
     </script>
    
