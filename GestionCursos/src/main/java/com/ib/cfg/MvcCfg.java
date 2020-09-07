@@ -15,6 +15,7 @@ public class MvcCfg implements WebMvcConfigurer {
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addRedirectViewController("/", "/home");
         registry.addViewController("/starter").setViewName("starter");
+        registry.addViewController("/security/login").setViewName("/security/login");
         //registry.addViewController("/admin/usuario").setViewName("/admin/usuario-lista");
     }
 

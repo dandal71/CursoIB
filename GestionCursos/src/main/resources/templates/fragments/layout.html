@@ -54,6 +54,15 @@
 								<i class="nav-icon fas fa-book-open"></i>Cursos
               				</a>
             			</li>
+                        
+                        <li class="nav-item">
+                            <a th:href="@{/security/logout}"  class="nav-link">Logout 
+                                (<span class="text-white" th:text="${#authentication.getPrincipal().getUsername()}"></span>)
+                                </a>
+                            
+                        </li>
+                        
+                        
 
                     </ul>
                 </nav>
